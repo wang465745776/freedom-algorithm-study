@@ -3,3 +3,6 @@
 
 ## 博客地址
 http://www.zhishizx.com/#/tutorialcontent/18032220-5013-4378-CCE0-2CFC495AADE7
+
+# 项目构建
+此项目使用Maven构建，JDK版本为1.7
