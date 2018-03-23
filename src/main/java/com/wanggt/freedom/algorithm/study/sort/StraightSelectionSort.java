@@ -2,8 +2,11 @@ package com.wanggt.freedom.algorithm.study.sort;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.wanggt.freedom.algorithm.study.util.ArrayBuilder;
+import com.wanggt.freedom.algorithm.study.util.ExecutionTime;
 import com.wanggt.freedom.algorithm.study.util.SortUtil;
 
 /**
@@ -14,14 +17,18 @@ import com.wanggt.freedom.algorithm.study.util.SortUtil;
  */
 public class StraightSelectionSort {
 
+	private Logger logger = LoggerFactory.getLogger(StraightSelectionSort.class);
+
 	@Test
 	public void testSort() {
 		// 生成一个长度为10的整形数组，数值为0-50之间随机
-		int[] intArray = ArrayBuilder.getIntArray(10, 1, 51);
+		int[] intArray = ArrayBuilder.getIntArray(1000, 1, 51);
 
 		// 进行排序
+		ExecutionTime executionTime = new ExecutionTime();
 		int[] sortResult = intSort(intArray);
-		
+		logger.info("直接选择排序长度为1000的数组，消耗时间是：{}毫秒", executionTime.getTime());
+
 		Assert.assertTrue(SortUtil.isSorted(sortResult));
 	}
 
