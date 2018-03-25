@@ -1,13 +1,10 @@
 package com.wanggt.freedom.algorithm.study.sort;
 
-import org.junit.Assert;
-import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.util.Comparator;
 
-import com.wanggt.freedom.algorithm.study.util.ArrayBuilder;
-import com.wanggt.freedom.algorithm.study.util.ExecutionTime;
-import com.wanggt.freedom.algorithm.study.util.SortUtil;
+import com.wanggt.freedom.algorithm.study.comparator.IntegerComparator;
+import com.wanggt.freedom.algorithm.study.constant.SortType;
+import com.wanggt.freedom.algorithm.study.util.ArrayUtil;
 
 /**
  * 直接选择排序，是选择排序的一种。
@@ -15,22 +12,7 @@ import com.wanggt.freedom.algorithm.study.util.SortUtil;
  * @date 2018年3月22日下午7:09:35
  * @version 1.0
  */
-public class StraightSelectionSort {
-
-	private Logger logger = LoggerFactory.getLogger(StraightSelectionSort.class);
-
-	@Test
-	public void testSort() {
-		// 生成一个长度为10的整形数组，数值为0-50之间随机
-		int[] intArray = ArrayBuilder.getIntArray(1000, 1, 51);
-
-		// 进行排序
-		ExecutionTime executionTime = new ExecutionTime();
-		int[] sortResult = intSort(intArray);
-		logger.info("直接选择排序长度为1000的数组，消耗时间是：{}毫秒", executionTime.getTime());
-
-		Assert.assertTrue(SortUtil.isSorted(sortResult));
-	}
+public class StraightSelectionSort implements Sort {
 
 	/**
 	 * 此方法通过直接选择排序算法对整形数组进行排序
@@ -40,7 +22,15 @@ public class StraightSelectionSort {
 	 * @date 2018年3月22日下午9:20:35
 	 * @version 1.0
 	 */
-	public static int[] intSort(int[] primaryArray) {
+	public int[] sort(int[] primaryArray) {
+		
+		Integer[] integers = sort(ArrayUtil.convert(primaryArray), new IntegerComparator(), SortType.ASC);
+		
+		return ArrayUtil.convert(integers);
+	}
+
+	@Override
+	public <T> T[] sort(T[] primaryArray, Comparator<T> comparator, SortType sortType) {
 		if (primaryArray == null) {
 			throw new NullPointerException("The int array can't be null!");
 		}
@@ -50,19 +40,30 @@ public class StraightSelectionSort {
 		}
 
 		for (int i = 0; i < primaryArray.length - 1; i++) {
-			// 求得第i+1次判断出的最小数字
-			int min = i;
+			// 求得第i+1次判断出的最小或最大数字
+			int num = i;
 			for (int j = i + 1; j < primaryArray.length; j++) {
-				if (primaryArray[min] > primaryArray[j]) {
-					min = j;
+				switch (sortType) {
+				case ASC:
+					if (comparator.compare(primaryArray[num], primaryArray[j]) > 0) {
+						num = j;
+					}
+					break;
+
+				default:
+					if (comparator.compare(primaryArray[num], primaryArray[j]) < 0) {
+						num = j;
+					}
+					break;
 				}
+
 			}
 
 			// 将第i+1次判断出来的最小数字所在的位置跟第i个位置上的数据对调
-			if (i != min) {
-				int temp = primaryArray[i];
-				primaryArray[i] = primaryArray[min];
-				primaryArray[min] = temp;
+			if (i != num) {
+				T temp = primaryArray[i];
+				primaryArray[i] = primaryArray[num];
+				primaryArray[num] = temp;
 			}
 		}
 

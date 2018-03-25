@@ -21,6 +21,10 @@ public class ArrayBuilder {
 	 * @version 1.0
 	 */
 	public static int[] getIntArray(int length, int start, int end) {
+		if (length < 0) {
+			throw new IllegalArgumentException("length must be more then 0!");
+		}
+
 		if (start >= end) {
 			throw new IllegalArgumentException("start must be less then end!");
 		}
@@ -43,5 +47,39 @@ public class ArrayBuilder {
 	 */
 	public static int[] getIntArray(int length) {
 		return getIntArray(length, 0, 1);
+	}
+
+	/**
+	 * 此方法返回近乎有序的整形数组
+	 * @param length 数组长度
+	 * @param confusion 混乱度，数值越大，数组越无序，当值为0时，数组时有序的
+	 * @return
+	 * @author freedom wang
+	 * @date 2018年3月23日下午4:52:39
+	 * @version 1.0
+	 */
+	public static int[] getNearlyOrderlyIntArray(int length, int confusion) {
+		if (length < 0) {
+			throw new IllegalArgumentException("length must be more then 0!");
+		}
+		
+		int[] intArray = new int[length];
+
+		for (int i = 0; i < length; i++) {
+			intArray[i] = i;
+		}
+
+		// 设置混乱
+		for (int c = 0; c < confusion; c++) {
+			Random random = new Random();
+			int from = random.nextInt(length);
+			int to = random.nextInt(length);
+
+			int temp = intArray[from];
+			intArray[to] = intArray[from];
+			intArray[from] = temp;
+		}
+
+		return intArray;
 	}
 }

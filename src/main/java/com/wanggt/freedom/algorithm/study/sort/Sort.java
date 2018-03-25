@@ -1,5 +1,9 @@
 package com.wanggt.freedom.algorithm.study.sort;
 
+import java.util.Comparator;
+
+import com.wanggt.freedom.algorithm.study.constant.SortType;
+
 /**
  * 实现此接口的类拥有排序功能
  * @author freedom wang
@@ -7,8 +11,6 @@ package com.wanggt.freedom.algorithm.study.sort;
  * @version 1.0
  */
 public interface Sort {
-	/** 测试时数组的长度 */
-	int LENGTH = 1000;
 
 	/**
 	 * 此方法通过排序算法对整形数组进行排序
@@ -18,22 +20,16 @@ public interface Sort {
 	 * @date 2018年3月22日下午9:20:35
 	 * @version 1.0
 	 */
-	int[] intSort(int[] primaryArray);
+	int[] sort(int[] primaryArray);
 
 	/**
-	 * 测试排序效果
+	 * 此方法对数组进行排序
+	 * @param priaryArray 带排序的数组
+	 * @param comparator 比较器
+	 * @return
 	 * @author freedom wang
-	 * @date 2018年3月23日下午10:25:17
+	 * @date 2018年3月25日上午10:05:02
 	 * @version 1.0
 	 */
-	void testSort();
-
-	/**
-	 * 测试排序效果
-	 * @param primaryArray
-	 * @author freedom wang
-	 * @date 2018年3月23日下午10:27:56
-	 * @version 1.0
-	 */
-	void testSort(int[] primaryArray);
+	<T> T[] sort(T[] primaryArray, Comparator<T> comparator, SortType sortType);
 }

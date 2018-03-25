@@ -14,6 +14,16 @@ public class ExecutionTime {
 	public ExecutionTime() {
 		beginDate = new Date();
 	}
+	
+	/**
+	 * 刷新基准时间
+	 * @author freedom wang
+	 * @date 2018年3月24日上午9:56:22
+	 * @version 1.0
+	 */
+	public void refreshTime() {
+		beginDate = new Date();
+	}
 
 	/**
 	 * 获取执行时间
