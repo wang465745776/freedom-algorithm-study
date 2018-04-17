@@ -21,7 +21,7 @@ import com.wanggt.freedom.algorithm.study.util.SortUtil;
 public class SortTest {
 	private Logger logger = LoggerFactory.getLogger(SortTest.class);
 
-	private int length = 10000;
+	private int length = 5000;
 
 	@Test
 	public void testSort() {
