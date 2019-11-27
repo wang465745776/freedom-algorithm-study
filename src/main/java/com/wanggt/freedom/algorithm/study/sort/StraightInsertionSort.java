@@ -2,10 +2,6 @@ package com.wanggt.freedom.algorithm.study.sort;
 
 import java.util.Comparator;
 
-import com.wanggt.freedom.algorithm.study.comparator.IntegerComparator;
-import com.wanggt.freedom.algorithm.study.constant.SortType;
-import com.wanggt.freedom.algorithm.study.util.ArrayUtil;
-
 /**
  * 直接插入排序，是插入排序的一种。
  * @author freedom wang
@@ -15,13 +11,13 @@ import com.wanggt.freedom.algorithm.study.util.ArrayUtil;
 public class StraightInsertionSort implements Sort {
 	
 	@Override
-	public <T> T[] sort(T[] primaryArray, Comparator<T> comparator, SortType sortType) {
+	public <T> void sort(T[] primaryArray, Comparator<T> comparator) {
 		if (primaryArray == null) {
 			throw new NullPointerException("The int array can't be null!");
 		}
 
 		if (primaryArray.length == 0) {
-			return primaryArray;
+			return;
 		}
 
 		for (int i = 1; i < primaryArray.length; i++) {
@@ -42,21 +38,5 @@ public class StraightInsertionSort implements Sort {
 				primaryArray[location] = temp;
 			}
 		}
-
-		return primaryArray;
-	}
-
-	/**
-	 * 此方法通过直接插入排序算法对整形数组进行排序.
-	 * @param primaryArray 待排序的整形数组
-	 * @return
-	 * @author freedom wang
-	 * @date 2018年3月22日下午9:20:35
-	 * @version 1.0
-	 */
-	public int[] sort(int[] primaryArray) {
-		Integer[] integers = sort(ArrayUtil.convert(primaryArray), new IntegerComparator(), SortType.ASC);
-		
-		return ArrayUtil.convert(integers);
 	}
 }
