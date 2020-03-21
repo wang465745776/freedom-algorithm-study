@@ -1,9 +1,7 @@
 package com.wanggt.freedom.algorithm.study.sort;
 
 import java.lang.reflect.Array;
-import java.util.Arrays;
 import java.util.Comparator;
-import java.util.Random;
 
 /**
  * 归并排序
@@ -53,24 +51,4 @@ public class MergeSort implements Sort {
     public <T> void sort(T[] primaryArray, Comparator<T> comparator) {
         sort(primaryArray, 0, primaryArray.length - 1, comparator);
     }
-
-    public static void main(String[] args) {
-        Integer[] data = new Integer[100000];
-        Random random = new Random();
-        for (int i = 0; i < data.length; i++) {
-            data[i] = random.nextInt(100000);
-        }
-
-        long beginTime = System.currentTimeMillis();
-        MergeSort mergeSort = new MergeSort();
-        mergeSort.sort(data, new Comparator<Integer>() {
-            @Override
-            public int compare(Integer o1, Integer o2) {
-                return o1 - o2;
-            }
-        });
-        System.out.println("耗时：" + (System.currentTimeMillis() - beginTime) + "毫秒");
-        System.out.println(Arrays.toString(data));
-    }
-
-}
+ }
