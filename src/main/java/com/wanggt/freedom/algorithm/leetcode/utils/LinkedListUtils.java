@@ -72,4 +72,14 @@ public class LinkedListUtils {
 
         return l1 == null && l2 == null;
     }
+
+    /**
+     * 比较两个链表是否相同
+     *
+     * @author freedom wang
+     * @date 2020-03-21 09:02:31
+     */
+    public static boolean compareLinkedList(ListNode l1, int... l2) {
+        return compareLinkedList(l1, createLinkedList(l2));
+    }
 }

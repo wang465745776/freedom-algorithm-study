@@ -7,8 +7,8 @@
 	<name>算法的学习项目</name>
 	<properties>
 		<!-- 编译JDK版本 -->
-		<maven.compiler.source>1.7</maven.compiler.source>
-		<maven.compiler.target>1.7</maven.compiler.target>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
 
 		<!-- 单元测试 -->
 		<junit.version>4.12</junit.version>
