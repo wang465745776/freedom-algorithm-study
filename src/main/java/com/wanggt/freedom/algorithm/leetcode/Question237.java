@@ -10,10 +10,6 @@ import java.util.List;
  *
  * 现有一个链表 -- head = [4,5,1,9]，它可以表示为:
  *
- *
- *
- *
- *
  * 示例 1:
  *
  * 输入: head = [4,5,1,9], node = 5
@@ -39,25 +35,20 @@ import java.util.List;
 public class Question237 {
 
     /**
-     * 解法一：创建一个虚拟节点dummy,并且使用两个指针，可以实现删除链表节点
+     * 解法一：将要删除节点的下一个节点的值赋给要删除节点，然后删除要删除节点的下一个节点。这个题目因为没有给出要删除节点的上一个
+     * 节点，所以只能通过这种修改节点的值的方式来删除节点。
      *
-     * 时间复杂度：O(n)
+     * 时间复杂度：O(1)
      * 空间复杂度：O(1)
+     *
      * @author freedom wang
      * @date 2020-03-20 07:54:34
      */
     public void deleteNode(ListNode node) {
-        if (node == null) {
-            return;
-        }
+        ListNode nextNode = node.next;
 
-        ListNode dummy = new ListNode(-1);
-        dummy.next = node;
-
-        ListNode pre = dummy;
-        ListNode cur = node;
-        while (cur != null) {
-//            cur.val ==
-        }
+        node.val = nextNode.val;
+        node.next = nextNode.next;
+        nextNode.next = null;
     }
 }
