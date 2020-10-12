@@ -11,7 +11,7 @@
 		<maven.compiler.target>1.8</maven.compiler.target>
 
 		<!-- 单元测试 -->
-		<junit.version>4.12</junit.version>
+		<junit.version>4.13.1</junit.version>
 
 		<!-- 日志相关 -->
 		<slf4j.version>1.7.22</slf4j.version>
